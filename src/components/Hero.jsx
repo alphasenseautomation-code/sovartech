@@ -118,7 +118,7 @@ export default function Hero({ onOpenVideo, onOpenContact }) {
         })}
 
         {/* Live System Telemetry HUD Bar */}
-        <div className="absolute bottom-6 right-8 bg-[#0B2347]/90 backdrop-blur-md border border-[#0878D1]/40 px-4 py-2.5 rounded-xs flex items-center space-x-6 text-xs font-mono text-slate-300">
+        <div className="absolute bottom-28 xl:bottom-6 right-8 bg-[#0B2347]/90 backdrop-blur-md border border-[#0878D1]/40 px-4 py-2.5 rounded-xs flex items-center space-x-6 text-xs font-mono text-slate-300">
           <div className="flex items-center space-x-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-slate-400">C-UAS STATUS:</span>

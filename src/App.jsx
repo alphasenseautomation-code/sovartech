@@ -4,6 +4,7 @@ import { MotionConfig } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollManager from './components/ScrollManager';
+import MobileBottomNav from './components/MobileBottomNav';
 import HomePage from './pages/HomePage';
 import './pages/pages.css';
 
@@ -34,6 +35,15 @@ function SiteLayout() {
 
       {/* Footer */}
       <Footer onOpenPolicy={() => setPolicyModalOpen(true)} />
+
+      {/* Mobile/tablet floating bottom navigation (hidden on desktop). The spacer,
+          in the footer bar colour, keeps the end of the footer clear of it. */}
+      <div
+        className="xl:hidden bg-[#0B2347]"
+        style={{ height: 'calc(5.5rem + env(safe-area-inset-bottom, 0px))' }}
+        aria-hidden="true"
+      />
+      <MobileBottomNav />
 
       {/* Privacy Policy Modal */}
       {policyModalOpen && (
