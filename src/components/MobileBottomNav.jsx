@@ -7,7 +7,7 @@ const items = [
   { name: 'ABOUT', to: '/about', icon: Info },
   { name: 'TECH', to: '/technology', icon: Cpu },
   { name: 'PRODUCTS', to: '/products', icon: Shield },
-  { name: 'APPLICATIONS', to: '/applications', icon: Globe },
+  { name: 'APPL...', label: 'Applications', to: '/applications', icon: Globe },
   { name: 'CONTACT', to: '/contact', icon: Mail },
 ];
 
@@ -26,15 +26,16 @@ export default function MobileBottomNav() {
       {/* Thin technical accent line along the top edge */}
       <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[#168BE8]/60 to-transparent" aria-hidden="true" />
 
-      <ul className="flex items-stretch justify-between px-1 py-1">
-        {items.map(({ name, to, icon: Icon }) => {
+      <ul className="grid grid-cols-6 px-1 py-1">
+        {items.map(({ name, label, to, icon: Icon }) => {
           const active = isActive(to);
           return (
-            <li key={to} className="flex-auto">
+            <li key={to} className="min-w-0">
               <Link
                 to={to}
                 aria-current={active ? 'page' : undefined}
-                className={`relative flex flex-col items-center justify-center gap-1 min-h-[52px] px-1 rounded-sm transition-colors duration-200 ${
+                aria-label={label}
+                className={`relative flex flex-col items-center justify-center gap-1 min-h-[52px] w-full min-w-0 px-0.5 rounded-sm transition-colors duration-200 ${
                   active ? 'text-[#168BE8] bg-[#0878D1]/12' : 'text-slate-300 hover:text-white'
                 }`}
               >
@@ -42,7 +43,7 @@ export default function MobileBottomNav() {
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full bg-[#168BE8] shadow-[0_0_8px_#168BE8]" aria-hidden="true" />
                 )}
                 <Icon className="w-[18px] h-[18px]" strokeWidth={1.75} aria-hidden="true" />
-                <span className="text-[9px] sm:text-[10px] font-bold tracking-wide leading-none whitespace-nowrap">
+                <span className="text-[8.5px] min-[360px]:text-[9px] sm:text-[10px] font-bold tracking-normal min-[360px]:tracking-wide leading-none whitespace-nowrap">
                   {name}
                 </span>
               </Link>
