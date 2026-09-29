@@ -1,0 +1,41 @@
+/* pages.css — styles for the dedicated pages only.
+   Every rule is scoped to .inner-page (or a class the homepage never uses),
+   so the approved homepage styling in index.css is untouched. */
+
+/* Anchor targets clear the fixed navbar (e.g. /applications#ports) */
+.inner-page section[id],
+.inner-page [data-anchor] {
+  scroll-margin-top: 88px;
+}
+
+/* Visible keyboard focus */
+.inner-page a:focus-visible,
+.inner-page button:focus-visible,
+.inner-page [role="button"]:focus-visible,
+.inner-page input:focus-visible,
+.inner-page select:focus-visible,
+.inner-page textarea:focus-visible {
+  outline: 2px solid #168BE8;
+  outline-offset: 2px;
+}
+
+/* Sensor-fusion diagram data flow (/technology) */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.animate-dash-flow {
+  animation: dash-flow 1.2s linear infinite;
+}
+
+/* Respect reduced-motion preferences on the dedicated pages */
+@media (prefers-reduced-motion: reduce) {
+  .inner-page .animate-radar-sweep,
+  .inner-page .animate-ping-slow,
+  .inner-page .animate-dash-flow,
+  .inner-page .animate-pulse {
+    animation: none !important;
+  }
+}
