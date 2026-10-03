@@ -26,7 +26,8 @@ function SiteLayout() {
   return (
     <div className="min-h-screen bg-[#071B3A] text-slate-100 font-sans selection:bg-[#0878D1] selection:text-white">
       {/* Navigation Bar */}
-      <Navbar onOpenContact={() => navigate('/contact')} />
+      {/* GET IN TOUCH buttons open the enquiry form; the CONTACT link stays /contact */}
+      <Navbar onOpenContact={() => navigate('/contact#enquiry-form')} />
 
       {/* Page content */}
       <main>

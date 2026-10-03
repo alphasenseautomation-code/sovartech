@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, ArrowRight, CheckCircle2, MapPin, Layers } from 'lucide-react';
+import { Shield, ArrowRight, CheckCircle2, MapPin, Layers, ChevronDown } from 'lucide-react';
 import PageHero from '../components/ui/PageHero';
 import SectionHeading from '../components/ui/SectionHeading';
 import ProductOverviewModal from '../components/ProductOverviewModal';
@@ -31,6 +31,27 @@ export default function ProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const closeProduct = useCallback(() => setSelectedProduct(null), []);
 
+  // Mobile accordion: one product open at a time. A #product-id link opens that product.
+  const { hash } = useLocation();
+  const hashId = products.some((p) => `#${p.id}` === hash) ? hash.slice(1) : null;
+  const [openId, setOpenId] = useState(hashId);
+  const [lastHashId, setLastHashId] = useState(hashId);
+  if (hashId !== lastHashId) {
+    setLastHashId(hashId);
+    if (hashId) setOpenId(hashId);
+  }
+  const toggleProduct = (id) => setOpenId((current) => (current === id ? null : id));
+
+  // On mobile, opening one product closes the previous one (300ms height transition),
+  // which shifts the page after the browser has scrolled to the #anchor. Re-align once it settles.
+  useEffect(() => {
+    if (!hashId || window.innerWidth >= 768) return undefined;
+    const timer = setTimeout(() => {
+      document.getElementById(hashId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [hashId]);
+
   return (
     <>
       <PageHero
@@ -52,6 +73,7 @@ export default function ProductsPage() {
               <li key={p.id}>
                 <a
                   href={`#${p.id}`}
+                  onClick={() => setOpenId(p.id)}
                   className="group flex items-center space-x-3 p-3 rounded-xs hover:bg-[#0B2347] transition-colors"
                 >
                   <span className="text-[10px] font-mono font-bold text-[#168BE8]">{String(i + 1).padStart(2, '0')}</span>
@@ -66,7 +88,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Product family overview */}
-      <section id="product-family" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+      <section id="product-family" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-light opacity-50 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
@@ -97,15 +119,42 @@ export default function ProductsPage() {
 
       {/* Individual products */}
       <section className="bg-[#F4F7FA] text-slate-800 py-10 md:py-16">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10 md:space-y-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 space-y-3 md:space-y-16">
           {products.map((product, i) => {
             const reversed = i % 2 === 1;
+            const open = openId === product.id;
             return (
+              <div key={product.id} id={product.id} data-anchor>
+              {/* Mobile only: collapsed accordion row */}
+              <button
+                type="button"
+                onClick={() => toggleProduct(product.id)}
+                aria-expanded={open}
+                aria-controls={`${product.id}-panel`}
+                className={`md:hidden w-full min-h-[56px] flex items-center gap-3 px-4 text-left bg-[#F4F7FA] border border-[#DCE3EA] rounded-xs transition-colors duration-300 ${
+                  open ? 'rounded-b-none border-b-[#0878D1]/40 bg-white' : 'hover:border-[#0878D1]'
+                }`}
+              >
+                <CheckCircle2 className="w-5 h-5 text-[#0878D1] shrink-0" strokeWidth={1.75} aria-hidden="true" />
+                <span className="flex-1 min-w-0 truncate text-sm font-extrabold text-[#071B3A] uppercase tracking-wider">
+                  {product.name}
+                </span>
+                <ChevronDown
+                  className={`w-4 h-4 text-[#0878D1] shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {/* Existing product card. Mobile: collapsible panel under the row; tablet/desktop: always shown as before. */}
+              <div
+                id={`${product.id}-panel`}
+                className={`max-md:grid max-md:transition-[grid-template-rows] max-md:duration-300 max-md:ease-out ${
+                  open ? 'max-md:grid-rows-[1fr]' : 'max-md:grid-rows-[0fr]'
+                }`}
+              >
+              <div className={`max-md:min-h-0 max-md:overflow-hidden ${open ? '' : 'max-md:invisible'}`}>
               <article
-                key={product.id}
-                id={product.id}
-                data-anchor
-                className="bg-white border border-slate-200 rounded-xs shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-2"
+                className="bg-white border border-slate-200 rounded-xs shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-2 max-md:rounded-t-none max-md:border-t-0 max-md:border-[#DCE3EA] max-md:shadow-none"
                 aria-labelledby={`${product.id}-title`}
               >
                 {/* Image */}
@@ -156,7 +205,7 @@ export default function ProductsPage() {
                   whileInView="visible"
                   viewport={viewportOnce}
                 >
-                  <motion.h2 variants={fadeInUp} id={`${product.id}-title`} className="text-3xl sm:text-4xl font-extrabold text-[#071B3A] uppercase tracking-tight">
+                  <motion.h2 variants={fadeInUp} id={`${product.id}-title`} className="text-3xl sm:text-4xl font-extrabold text-[#071B3A] uppercase tracking-tight max-md:sr-only">
                     {product.name}
                   </motion.h2>
                   <motion.p variants={fadeInUp} className="text-sm font-bold text-[#0878D1] uppercase tracking-wider mt-1">
@@ -202,7 +251,7 @@ export default function ProductsPage() {
                       <ArrowRight className="w-4 h-4 text-[#168BE8] group-hover:translate-x-1 transition-transform" />
                     </button>
                     <Link
-                      to={`/contact?product=${encodeURIComponent(product.name)}`}
+                      to={`/contact?product=${encodeURIComponent(product.name)}#enquiry-form`}
                       className="inline-flex items-center justify-center space-x-2 border border-[#0878D1] text-[#0878D1] hover:bg-[#0878D1] hover:text-white font-extrabold text-xs sm:text-sm tracking-wider px-7 py-3.5 rounded-xs transition-colors"
                     >
                       <span>ENQUIRE</span>
@@ -210,13 +259,16 @@ export default function ProductsPage() {
                   </motion.div>
                 </motion.div>
               </article>
+              </div>
+              </div>
+              </div>
             );
           })}
         </div>
       </section>
 
       {/* Where they're deployed */}
-      <section className="py-16 bg-white border-t border-[#DCE3EA]">
+      <section className="py-12 md:py-16 bg-white border-t border-[#DCE3EA]">
         <motion.div
           className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
           variants={cardReveal}

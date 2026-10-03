@@ -17,7 +17,7 @@ export default function CTASection({
   buttonLabel = 'GET IN TOUCH'
 }) {
   return (
-    <section className="relative py-24 md:py-32 bg-[#071B3A] text-white overflow-hidden">
+    <section className="relative py-16 md:py-32 bg-[#071B3A] text-white overflow-hidden">
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0 opacity-40">
         <img

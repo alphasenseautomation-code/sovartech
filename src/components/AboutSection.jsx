@@ -13,7 +13,7 @@ import {
 
 export default function AboutSection({ onOpenContact }) {
   return (
-    <section id="about" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+    <section id="about" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
       {/* Subtle Light Engineering Grid Background */}
       <div className="absolute inset-0 bg-tech-grid-light opacity-60 pointer-events-none" />
 

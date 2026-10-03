@@ -31,7 +31,8 @@ export default function HomePage() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
-  const goToContact = () => navigate('/contact');
+  // Enquiry CTAs open the Contact page at the enquiry form
+  const goToContact = () => navigate('/contact#enquiry-form');
 
   return (
     <>
@@ -76,7 +77,7 @@ export default function HomePage() {
         <ProductDetailModal
           product={selectedProduct}
           onClose={() => setSelectedProduct(null)}
-          onInquire={(productName) => navigate(`/contact?product=${encodeURIComponent(productName)}`)}
+          onInquire={(productName) => navigate(`/contact?product=${encodeURIComponent(productName)}#enquiry-form`)}
         />
       )}
 

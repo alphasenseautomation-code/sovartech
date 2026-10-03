@@ -11,7 +11,7 @@ import {
 
 export default function ApplicationsSection({ onOpenContact, onSelectApplication }) {
   return (
-    <section id="applications" className="py-20 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
+    <section id="applications" className="py-14 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-tech-grid-dark opacity-40 pointer-events-none" />
 

@@ -20,7 +20,7 @@ const iconMap = {
 
 export default function ServicesSection({ onOpenContact }) {
   return (
-    <section id="services" className="py-20 md:py-28 bg-[#F4F7FA] text-slate-800 relative">
+    <section id="services" className="py-14 md:py-28 bg-[#F4F7FA] text-slate-800 relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

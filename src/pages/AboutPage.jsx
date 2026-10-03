@@ -47,7 +47,7 @@ export default function AboutPage() {
       </PageHero>
 
       {/* 01 — Who We Are */}
-      <section id="who-we-are" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+      <section id="who-we-are" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-light opacity-60 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-7">
@@ -109,7 +109,7 @@ export default function AboutPage() {
       </section>
 
       {/* 02 & 03 — Mission & Vision */}
-      <section id="mission" className="py-20 md:py-28 bg-[#F4F7FA] text-slate-800">
+      <section id="mission" className="py-14 md:py-28 bg-[#F4F7FA] text-slate-800">
         <motion.div
           className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8"
           variants={staggerContainer}
@@ -159,7 +159,7 @@ export default function AboutPage() {
       </section>
 
       {/* 04–09 — Why SOVAR TECH */}
-      <section id="why-sovar" className="py-20 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
+      <section id="why-sovar" className="py-14 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-dark opacity-40 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
@@ -206,7 +206,7 @@ export default function AboutPage() {
       </section>
 
       {/* 10 — Our Values */}
-      <section id="values" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+      <section id="values" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-light opacity-50 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading eyebrow="10 — OUR VALUES" icon={Award} title="OUR VALUES" align="center" className="mb-14" />

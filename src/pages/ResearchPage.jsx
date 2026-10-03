@@ -40,7 +40,7 @@ export default function ResearchPage() {
       />
 
       {/* R&D focus */}
-      <section id="focus" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+      <section id="focus" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-light opacity-50 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14 items-end">
@@ -96,7 +96,7 @@ export default function ResearchPage() {
       </section>
 
       {/* Engineering lab */}
-      <section id="engineering" className="py-20 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
+      <section id="engineering" className="py-14 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-dark opacity-40 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Visual */}
@@ -165,7 +165,7 @@ export default function ResearchPage() {
       </section>
 
       {/* Building for emerging threats */}
-      <section id="emerging-threats" className="py-20 md:py-28 bg-[#F4F7FA] text-slate-800">
+      <section id="emerging-threats" className="py-14 md:py-28 bg-[#F4F7FA] text-slate-800">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="LOOKING AHEAD"

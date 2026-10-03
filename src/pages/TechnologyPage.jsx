@@ -43,7 +43,7 @@ export default function TechnologyPage() {
       </PageHero>
 
       {/* Integrated approach + sensor fusion */}
-      <section id="sensor-fusion" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+      <section id="sensor-fusion" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-light opacity-50 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
@@ -59,7 +59,7 @@ export default function TechnologyPage() {
       </section>
 
       {/* Individual technologies */}
-      <section id="capabilities" className="py-20 md:py-28 bg-[#F4F7FA] text-slate-800">
+      <section id="capabilities" className="py-14 md:py-28 bg-[#F4F7FA] text-slate-800">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-slate-300/80 pb-6 gap-6">
             <SectionHeading eyebrow="CORE TECHNOLOGIES" icon={Cpu} title="THE TECHNOLOGY STACK" />
@@ -120,7 +120,7 @@ export default function TechnologyPage() {
       </section>
 
       {/* Architecture flow */}
-      <section id="architecture" className="py-20 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
+      <section id="architecture" className="py-14 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-dark opacity-40 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading

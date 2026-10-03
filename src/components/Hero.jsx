@@ -60,10 +60,11 @@ export default function Hero({ onOpenVideo, onOpenContact }) {
       </motion.div>
 
       {/* Interactive HUD Overlay Elements */}
-      <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden hidden md:block">
+      {/* Mobile (<md): same effects, softened and scaled to sit behind the hero text */}
+      <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden max-md:opacity-75">
         {/* Animated Radar Scanning Arc (Right Side) */}
         <motion.div
-          className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[550px] h-[550px] lg:w-[650px] lg:h-[650px] rounded-full border border-[#168BE8]/30 flex items-center justify-center"
+          className="absolute top-1/2 -right-[150px] md:right-[10%] -translate-y-1/2 w-[300px] h-[300px] md:w-[550px] md:h-[550px] lg:w-[650px] lg:h-[650px] rounded-full border border-[#168BE8]/30 flex items-center justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -93,7 +94,7 @@ export default function Hero({ onOpenVideo, onOpenContact }) {
               className="absolute pointer-events-auto cursor-pointer group"
               onClick={() => setActiveTarget(target.id)}
             >
-              <div className={`relative p-2 transition-all duration-300 ${isSelected ? 'scale-110' : 'opacity-80 group-hover:opacity-100'}`}>
+              <div className={`relative p-2 transition-all duration-300 max-md:scale-75 ${isSelected ? 'scale-110' : 'opacity-80 group-hover:opacity-100'}`}>
                 {/* Tactical Target Box */}
                 <div className={`w-10 h-10 border-2 relative flex items-center justify-center ${
                   target.status === 'HOSTILE' ? 'border-red-500 shadow-[0_0_12px_rgba(239,68,68,0.6)]' : 'border-[#168BE8] shadow-[0_0_12px_rgba(22,139,232,0.6)]'
@@ -102,7 +103,7 @@ export default function Hero({ onOpenVideo, onOpenContact }) {
                 </div>
 
                 {/* Target Data Tag */}
-                <div className="absolute left-12 top-0 bg-[#071B3A]/90 backdrop-blur-md border border-slate-700 p-2 rounded-xs text-[10px] font-mono text-slate-200 min-w-[130px] shadow-lg">
+                <div className="hidden md:block absolute left-12 top-0 bg-[#071B3A]/90 backdrop-blur-md border border-slate-700 p-2 rounded-xs text-[10px] font-mono text-slate-200 min-w-[130px] shadow-lg">
                   <div className="flex justify-between items-center text-[#168BE8] font-bold">
                     <span>{target.id}</span>
                     <span className={target.status === 'HOSTILE' ? 'text-red-400 font-extrabold' : 'text-amber-400'}>
@@ -118,7 +119,7 @@ export default function Hero({ onOpenVideo, onOpenContact }) {
         })}
 
         {/* Live System Telemetry HUD Bar */}
-        <div className="absolute bottom-28 xl:bottom-6 right-8 bg-[#0B2347]/90 backdrop-blur-md border border-[#0878D1]/40 px-4 py-2.5 rounded-xs flex items-center space-x-6 text-xs font-mono text-slate-300">
+        <div className="absolute bottom-28 xl:bottom-6 right-8 bg-[#0B2347]/90 backdrop-blur-md border border-[#0878D1]/40 px-4 py-2.5 rounded-xs hidden md:flex items-center space-x-6 text-xs font-mono text-slate-300">
           <div className="flex items-center space-x-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-slate-400">C-UAS STATUS:</span>
@@ -162,7 +163,7 @@ export default function Hero({ onOpenVideo, onOpenContact }) {
           </motion.h1>
 
           {/* Supporting Line */}
-          <motion.h2 variants={heroFadeUp} className="text-xl sm:text-2xl font-bold tracking-wider text-slate-300 mb-6 uppercase border-l-4 border-[#0878D1] pl-3">
+          <motion.h2 variants={heroFadeUp} className="text-[16px] font-bold tracking-[4px] text-white mb-6 uppercase border-l-4 border-[#0878D1] pl-3">
             BRIGHTER TOMORROW
           </motion.h2>
 

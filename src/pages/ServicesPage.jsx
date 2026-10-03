@@ -43,7 +43,7 @@ export default function ServicesPage() {
       />
 
       {/* Lifecycle */}
-      <section id="lifecycle" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+      <section id="lifecycle" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-light opacity-60 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
@@ -109,7 +109,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services */}
-      <section id="services-list" className="py-20 md:py-28 bg-[#F4F7FA] text-slate-800">
+      <section id="services-list" className="py-14 md:py-28 bg-[#F4F7FA] text-slate-800">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading eyebrow="WHAT WE DELIVER" icon={Wrench} title="ENGINEERING SERVICES" className="mb-14" />
           <motion.div
@@ -156,7 +156,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Integration scope */}
-      <section id="system-integration" className="py-20 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
+      <section id="system-integration" className="py-14 md:py-28 bg-[#071B3A] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-dark opacity-40 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">

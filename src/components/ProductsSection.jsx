@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, ExternalLink } from 'lucide-react';
 import { products } from '../data/sovarData';
+import { MobileAccordionRow, MobileAccordionPanel } from './ui/MobileAccordion';
 import {
   fadeInUp,
   staggerContainer,
@@ -13,8 +14,12 @@ import {
 const MotionLink = motion.create(Link);
 
 export default function ProductsSection({ onSelectProduct }) {
+  // Mobile accordion: all collapsed initially, one open at a time.
+  const [openId, setOpenId] = useState(null);
+  const toggleProduct = (id) => setOpenId((current) => (current === id ? null : id));
+
   return (
-    <section id="products" className="py-20 md:py-28 bg-[#F4F7FA] text-slate-800 relative">
+    <section id="products" className="py-14 md:py-28 bg-[#F4F7FA] text-slate-800 relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -46,18 +51,28 @@ export default function ProductsSection({ onSelectProduct }) {
 
         {/* 6 Premium Product Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
-          {products.map((product) => (
-            <motion.div
-              key={product.id}
-              variants={cardReveal}
+          {products.map((product) => {
+            const open = openId === product.id;
+            return (
+            <motion.div key={product.id} variants={cardReveal}>
+            {/* Mobile only: collapsed accordion row (same as the Products page) */}
+            <MobileAccordionRow
+              title={product.name}
+              open={open}
+              onToggle={() => toggleProduct(product.id)}
+              panelId={`home-${product.id}-panel`}
+            />
+            {/* Existing product card: mobile collapsible panel; md+ unchanged, full height in the grid */}
+            <MobileAccordionPanel id={`home-${product.id}-panel`} open={open} className="md:h-full" innerClassName="md:h-full">
+            <div
               onClick={() => onSelectProduct(product)}
-              className="group bg-white rounded-xs border border-slate-200 overflow-hidden shadow-md hover:shadow-2xl hover:border-[#0878D1] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+              className="group bg-white rounded-xs border border-slate-200 overflow-hidden shadow-md hover:shadow-2xl hover:border-[#0878D1] transition-all duration-300 cursor-pointer flex flex-col justify-between md:h-full max-md:rounded-t-none max-md:border-t-0 max-md:border-[#DCE3EA] max-md:shadow-none"
             >
               <div>
                 {/* Product Image Container */}
@@ -77,7 +92,7 @@ export default function ProductsSection({ onSelectProduct }) {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-extrabold text-[#071B3A] group-hover:text-[#0878D1] transition-colors uppercase tracking-wide">
+                  <h3 className="text-xl font-extrabold text-[#071B3A] group-hover:text-[#0878D1] transition-colors uppercase tracking-wide max-md:sr-only">
                     {product.name}
                   </h3>
                   <p className="text-xs font-bold text-[#0878D1] mt-1 uppercase tracking-wider">
@@ -98,8 +113,11 @@ export default function ProductsSection({ onSelectProduct }) {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </div>
+            </div>
+            </MobileAccordionPanel>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>

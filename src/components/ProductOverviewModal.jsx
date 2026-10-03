@@ -130,7 +130,7 @@ export default function ProductOverviewModal({ product, onClose }) {
           </Link>
 
           <Link
-            to={`/contact?product=${encodeURIComponent(product.name)}`}
+            to={`/contact?product=${encodeURIComponent(product.name)}#enquiry-form`}
             onClick={onClose}
             className="bg-[#0878D1] hover:bg-[#168BE8] text-white font-extrabold text-xs tracking-wider px-6 py-3 rounded-xs flex items-center space-x-2 shadow-md"
           >

@@ -20,7 +20,7 @@ export default function MobileBottomNav() {
   return (
     <nav
       aria-label="Primary mobile navigation"
-      className="xl:hidden fixed inset-x-3 sm:inset-x-6 md:left-1/2 md:right-auto md:w-[640px] md:-translate-x-1/2 z-40 bg-[#071B3A]/95 backdrop-blur-md border border-[#0878D1]/35 rounded-md shadow-[0_8px_30px_rgba(0,0,0,0.45),0_0_18px_rgba(8,120,209,0.18)]"
+      className="xl:hidden fixed inset-x-3 sm:inset-x-6 md:left-1/2 md:right-auto md:w-[640px] md:-translate-x-1/2 z-40 bg-[#071B3A]/95 backdrop-blur-md border border-[#0878D1]/35 rounded-[12px] shadow-[0_8px_30px_rgba(0,0,0,0.45),0_0_18px_rgba(8,120,209,0.18)]"
       style={{ bottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}
     >
       {/* Thin technical accent line along the top edge */}
@@ -35,7 +35,7 @@ export default function MobileBottomNav() {
                 to={to}
                 aria-current={active ? 'page' : undefined}
                 aria-label={label}
-                className={`relative flex flex-col items-center justify-center gap-1 min-h-[52px] w-full min-w-0 px-0.5 rounded-sm transition-colors duration-200 ${
+                className={`relative flex flex-col items-center justify-center gap-1 min-h-[52px] w-full min-w-0 px-0.5 rounded-[10px] transition-colors duration-200 ${
                   active ? 'text-[#168BE8] bg-[#0878D1]/12' : 'text-slate-300 hover:text-white'
                 }`}
               >

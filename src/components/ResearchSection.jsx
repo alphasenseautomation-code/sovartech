@@ -14,7 +14,7 @@ import {
 
 export default function ResearchSection({ onOpenContact }) {
   return (
-    <section id="rd" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+    <section id="rd" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
       <div className="absolute inset-0 bg-tech-grid-light opacity-50 pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

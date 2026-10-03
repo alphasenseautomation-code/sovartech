@@ -20,7 +20,7 @@ const iconMap = {
 
 export default function TechnologySection({ onOpenContact }) {
   return (
-    <section id="technology" className="py-20 md:py-28 bg-white text-slate-800 relative overflow-hidden">
+    <section id="technology" className="py-14 md:py-28 bg-white text-slate-800 relative overflow-hidden">
       {/* Background Engineering Grid */}
       <div className="absolute inset-0 bg-tech-grid-light opacity-50 pointer-events-none" />
 

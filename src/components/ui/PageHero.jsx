@@ -28,7 +28,7 @@ export default function PageHero({
   children
 }) {
   return (
-    <section className="relative min-h-[78vh] md:min-h-[72vh] flex items-center pt-32 pb-20 overflow-hidden bg-[#071B3A]">
+    <section className="relative min-h-[64vh] md:min-h-[72vh] flex items-center pt-32 pb-14 md:pb-20 overflow-hidden bg-[#071B3A]">
       {/* Background image layer */}
       <div className="absolute inset-0 z-0">
         {image && (

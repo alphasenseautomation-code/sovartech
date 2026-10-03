@@ -52,7 +52,7 @@ export default function ApplicationsPage() {
         </nav>
       </PageHero>
 
-      <section className="py-16 md:py-20 bg-white text-slate-800 relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-white text-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-tech-grid-light opacity-50 pointer-events-none" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeading
@@ -115,7 +115,7 @@ export default function ApplicationsPage() {
                 </div>
               </div>
 
-              <div className="relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-20">
+              <div className="relative z-10 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
                 <motion.div
                   className={`max-w-xl ${rightAligned ? 'md:ml-auto' : ''}`}
                   variants={staggerContainer}

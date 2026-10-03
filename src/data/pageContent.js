@@ -281,7 +281,8 @@ export const enquiryInterests = [
   'Offshore',
   'Ports',
   'Industrial',
-  'Critical Infrastructure'
+  'Critical Infrastructure',
+  'Other'
 ];
 
 // ---------------------------------------------------------------------------
@@ -298,6 +299,52 @@ export const contactInfo = {
   // Website enquiries: sent TO the projects mailbox, with the other two in CC.
   enquiryTo: 'projects@sovartech.com',
   enquiryCc: ['sarun@sovartech.com', 'sachin@sovartech.com']
+};
+
+// Contact page content as supplied by the client. Phone numbers are shown exactly
+// as written; `href` is the same number with spaces removed for tel: links.
+export const contactPage = {
+  intro:
+    'For enquiries related to Anti-Drone & Counter-UAS Systems, Maritime Protection, Oil & Gas Security, LNG Facilities, System Integration, R&D, Software Development, Manufacturing, and Maintenance, please contact our team.',
+  services: [
+    'Anti-Drone & Counter-UAS',
+    'Maritime Security',
+    'Oil & Gas',
+    'LNG',
+    'Offshore',
+    'R&D',
+    'Software',
+    'System Integration',
+    'Manufacturing',
+    'Maintenance'
+  ],
+  regions: [
+    { flag: '🇮🇳', country: 'India', phones: [{ label: '+91 99470 93156', href: 'tel:+919947093156' }], email: 'projects@sovartech.com' },
+    { flag: '🇦🇪', country: 'UAE', phones: [{ label: '+971 52 667 6444', href: 'tel:+971526676444' }], email: 'projects@sovartech.com' },
+    { flag: '🇧🇪', country: 'Belgium', note: 'Regional Office / Contact — Coming Soon', email: 'projects@sovartech.com' },
+    { flag: '🇷🇺', country: 'Russia', note: 'Regional Office / Contact — Coming Soon', email: 'projects@sovartech.com' }
+  ],
+  keyContacts: [
+    {
+      name: 'Sarun Saju',
+      title: 'Director – Business & Technology',
+      phones: [
+        { label: '+91 99470 93156', href: 'tel:+919947093156' },
+        { label: '+971526705946', href: 'tel:+971526705946' }
+      ],
+      email: 'sarun@sovartech.com'
+    },
+    {
+      name: 'Sachin Mohan',
+      title: 'Director – Business Development & Operations',
+      phones: [{ label: '+971 52 667 6444', href: 'tel:+971526676444' }],
+      email: 'sachin@sovartech.com'
+    }
+  ],
+  closing: {
+    name: 'SOVAR TECH',
+    tagline: 'Advanced Air & Maritime Protection'
+  }
 };
 
 // Merged over the homepage product records (by id) on /products.
